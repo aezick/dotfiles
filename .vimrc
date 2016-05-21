@@ -1,7 +1,7 @@
-# First step
+" First step "
 set nocompatible
 
-# Formatting + UI
+" Formatting + UI "
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -10,6 +10,6 @@ set number
 set cul
 set ruler
 
-# Theme and colors
+" Theme and colors "
 syntax enable
 colorscheme firewatch
