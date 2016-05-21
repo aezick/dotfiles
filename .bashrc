@@ -1,10 +1,11 @@
 ### Aliases ###############################################################
-alias ls="ls -G -h"
-alias ll="ls -G -h -l"
-alias la="ls -G -h -A"
-alias wcl="wc -l"
-alias grep="grep --color"
+alias cdd="cd .."
 alias hc="~/Applications/hashcat/hc"
+alias grep="grep --color"
+alias la="ls -G -h -A"
+alias ll="ls -G -h -l"
+alias ls="ls -G -h"
+alias wcl="wc -l"
 
 ### Editor ################################################################
 export EDITOR="vim"
