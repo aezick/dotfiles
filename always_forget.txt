@@ -1,19 +1,20 @@
 ########################################
-# Helpful hints, tips, and tricks (started from DeOrio file)
+# Helpful hints, tips, and tricks
+# (Started from https://github.com/awdeorio/dotfiles/blob/master/.always_forget.txt)
 ########################################
 
-# 398 C4CS Commands Complete List
-git, cat, echo, apt-get, less, grep, wget, which, sed, ls, export, find, touch, diff,
-spell, whoami, who, w, cd, mv, rm, cp, pwd, mkdir/rmdir, wc, man, ps <aux>, chmod,
-file, yes, fortune, cowsay, jobs, fg, bg, tr, time
+# Helpful reminders of the many Unix commands that exist
+git, cat, echo, apt-get, less, grep, wget, which, sed, ls, export, find, touch, diff, spell, whoami, who, w, cd, mv, rm, cp, pwd, mkdir/rmdir, wc, man, ps <aux>, chmod, file, yes, fortune, cowsay, jobs, fg, bg, tr, time, curl
 
-echo					# writes arguments to standard output
-less	# no idea, something about input buffering
-which					# tells you what file you’re pointing to
-sed					# stream editor, useful for replacing chars
-export	# no clue what it does
-time					# time the execution of a program
-stat					# prints info about the file like timestamps
+echo                    # writes arguments to standard output
+less                    # less is more...as in a pager for viewing files
+which                   # tells you what file you’re pointing to
+sed                     # stream editor, useful for replacing chars
+export                  # variables passed to child processes by shell
+time                    # time the execution of a program
+stat                    # prints info about the file like timestamps
+file                    # identifies type of file, no metrics like stat
+apt-get                 # package installer, when in doubt try using sudo
 
 # strip regex punctuation and count occurrences of all words in file
 cat text.txt | sed 's|[,.]||g' | tr ' ' '\n' | sort | uniq -c
@@ -756,6 +757,11 @@ int(), str()
 >>> x[2:-2]				#’llo Worl'
 >>> x[::-1]				# reverses a string ‘!dlrow olleH’
 
+# Altering a String
+>>> Li = list(stringgg)         # want to change char x in stringgg?
+>>> Li[x] = ‘Z’                 # sets char x equal to ‘Z’
+>>> stringgg = “”.join(Li)      # joins the list back into a string
+
 ########################################
 # Ruby local install
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -834,6 +840,12 @@ git config --global user.name "Your Name Here"
 git config --global color.diff auto
 git config --global color.status auto
 git config --global color.branch auto
+
+# Aliases
+git config --global alias.new_alias original_command
+git config --global alias.st status # here are some common ones
+git config --global alias.br branch
+
 
 # Set the default email for git to use when you commit
 git config --global user.email "your_email@example.com"
@@ -988,6 +1000,7 @@ git branch --set-upstream-to=origin/BRANCH BRANCH # fix tracking
 
 ########################################
 # Comparing
+git diff --cached/git status -v         # see staged changes
 git diff BRANCH1 BRANCH2                # diff two local branches
 git diff master remotes/origin/dataset  # diff two remote branches
 git mergetool --tool-help               # list available diff/merge tools
