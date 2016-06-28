@@ -10,6 +10,10 @@ alias wcl="wc -l"
 ### Editor ################################################################
 export EDITOR="vim"
 
+### Pager #################################################################
+alias less="less --ignore-case --raw-control-chars --long-prompt"
+export PAGER="less"
+
 ### History ###############################################################
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTIGNORE="ls:ll:la:git st"      # ignore these commands in history
