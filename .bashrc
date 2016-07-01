@@ -6,6 +6,7 @@ alias la="ls -G -h -A"
 alias ll="ls -G -h -l"
 alias ls="ls -G -h"
 alias wcl="wc -l"
+alias sublime="~/bin/subl"
 
 ### Editor ################################################################
 export EDITOR="vim"

@@ -728,12 +728,22 @@ ipython nbconvert --to=notebook --ClearOutputPreprocessor.enabled=True --Execute
 export PYTHONPATH=${HOME}/local/lib/python2.6:${PYTHONPATH}
 export PYTHONUSERBASE=${HOME}/local
 
-# set up local package installs
+# set up local package installs and virtual environments
 virtualenv ./venv                       # create
+virtualenv -p /usr/bin/python2.7 venv	# create with chosen python version
 . ./venv/bin/activate                   # enable
+source venv/bin/activate				# another way to enable
 pip install PACKAGE                     # install PACKAGE
-python3 -m pip install PACKAGE		# install PACKAGE for python3
+pip freeze > requirements.txt			# save currently installed packages into file
+pip install -r requirements.txt			# install requirements listed in file
+python3 -m pip install PACKAGE			# install PACKAGE for python3, pip3 also viable
 deactivate                              # disable
+
+# virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs		# add PATH for workon environments
+source /usr/local/bin/virtualenvwrapper.sh	# setup the wrapper
+mkvirtualenv venv						# make new virtualenv
+workon venv								# work inside the new virtualenv
 
 # Quick web server serving files in PWD on port 8000
 python -m SimpleHTTPServer 
