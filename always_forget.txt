@@ -41,6 +41,9 @@ $ = end of the string
 
 # Vim shortcuts
 /WORD					# search forward in file for WORD
+?WORD                   # search backwards
+:s/foo/bar/gcI          # searches globally (g), asks to replace (c), case-sensitive (I)
+g* and g#              # prev/next search of current word, in-exact (g)
 =G (shift-g)				# auto-indents everything if you start at “gg”
 :e FILENAME				# open FILENAME in current window
 :split FILENAME				# open FILENAME in new window
@@ -216,6 +219,7 @@ nc -v HOST PORT                    # check connection to HOST on PORT
 wget https://www.google.com/       # download one page
 wget -m andrewdeorio.com           # download everything
 traceroute                         # print route packets take to network host
+curl icanhazip.com                  # get my IP address
 curl --verbose                     # watch protocol in action
 curl --trace-ascii log.txt         # watch protocol in action, more detail
 curl --trace-ascii log.txt --trace-time # include timing
@@ -332,6 +336,8 @@ $0                                      # argv[0] in bash
 LOGFILE=${TXTFILE%.txt}.log             # change file extension
 set -o verbose                          # echo commands to stdout
 cd $(dirname "$BASH_SOURCE") && pwd -P  # absolute path of sourced script
+. script.sh                             # run in current process, eq. to source
+: > file                                # clears a file (redirecting a noop)
 
 
 # crontab format
@@ -372,6 +378,8 @@ sed -e '/before/q'      # print from beginning to line matching 'before'
 sed -nr 's/@@  ([0-9]+\.?[0-9]*) ns total time to execute/\1/p' 
 sed '1s/before/after/' FILE  # replace first line
 FIXME: sed search and THEN do replace, e.g., '/searchterm/s/query/replace/'
+
+
 
 # awk
 echo -e '1\n2\n3' | awk '{ sum += $1 }; END { print sum }' # sum an input stream
@@ -851,11 +859,21 @@ git config --global color.diff auto
 git config --global color.status auto
 git config --global color.branch auto
 
-# Aliases
-git config --global alias.new_alias original_command
-git config --global alias.st status # here are some common ones
+# Simpler aliases
+git config --[global|system|local] alias.new_alias original_command
+git config --global alias.st status # here are some common/useful ones
+git config --global alias.c commit
+git config --global alias.cm commit -m
+git config --global alias.d diff
 git config --global alias.br branch
+git config --global alias.master checkout master
 
+### Longer aliases
+# Prints your list of git aliases in a readable format
+git config --global alias.alias !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(    .*\\)/\\1\\\t => \\2/' | sort
+# Prettier graphs, see below sections
+git config --global alias.l log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+git config --global alias.ll log --stat --abbrev-commit
 
 # Set the default email for git to use when you commit
 git config --global user.email "your_email@example.com"
@@ -1010,7 +1028,7 @@ git branch --set-upstream-to=origin/BRANCH BRANCH # fix tracking
 
 ########################################
 # Comparing
-git diff --cached/git status -v         # see staged changes
+git diff --cached/--staged/status -v         # see staged changes
 git diff BRANCH1 BRANCH2                # diff two local branches
 git diff master remotes/origin/dataset  # diff two remote branches
 git mergetool --tool-help               # list available diff/merge tools

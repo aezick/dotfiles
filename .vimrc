@@ -1,14 +1,27 @@
-" First step "
+" First step
 set nocompatible
 
-" Formatting + UI "
+" General Stuff
+set history=1000
+
+" Formatting + UI
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
-set expandtab
+set smarttab
+set ai
+set si
 set number
 set ruler
+set showmatch
 
-" Theme and colors "
+" Theme and colors
 syntax enable
-colorscheme firewatch
+colorscheme monokai
+hi Normal ctermbg=none
+hi LineNr ctermbg=none
+
+" Search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch

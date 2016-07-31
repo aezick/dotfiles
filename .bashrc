@@ -1,10 +1,10 @@
 ### Aliases ###############################################################
-alias cdd="cd .."
+alias cdc="cd .."
 alias hc="~/Applications/hashcat/hc"
 alias grep="grep --color"
-alias la="ls -G -h -A"
-alias ll="ls -G -h -l"
-alias ls="ls -G -h"
+alias la="ls -G -h -A -p"
+alias ll="ls -G -h -l -p"
+alias ls="ls -G -h -p"
 alias wcl="wc -l"
 alias sublime="~/bin/subl"
 
