@@ -3,8 +3,8 @@
 # (Started from https://github.com/awdeorio/dotfiles/blob/master/.always_forget.txt)
 ########################################
 
-# Helpful reminders of the many Unix commands that exist
-git, cat, echo, apt-get, less, grep, wget, which, sed, ls, export, find, touch, diff, spell, whoami, who, w, cd, mv, rm, cp, pwd, mkdir/rmdir, wc, man, ps <aux>, chmod, file, yes, fortune, cowsay, jobs, fg, bg, tr, time, curl
+# Helpful reminders/list of the many Unix commands that exist
+git, cat, echo, apt-get, less, grep, wget, which, sed, ls, export, find, touch, diff, spell, whoami, who, w, cd, mv, rm, cp, pwd, mkdir/rmdir, wc, man, ps <aux>, chmod, file, yes, fortune, say, cowsay, jobs, fg, bg, tr, time, curl, cal, head, tail
 
 echo                    # writes arguments to standard output
 less                    # less is more...as in a pager for viewing files
@@ -39,21 +39,27 @@ cat text.txt | sed 's|[,.]||g' | tr ' ' '\n' | sort | uniq -c
 $ = end of the string
 (…) = capture group
 
+# Convenient regex from http://emailregex.com/
+python: r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+# although sending a validation email is preferred
+# see: https://davidcel.is/posts/stop-validating-email-addresses-with-regex/
+
+
 # Vim shortcuts
 /WORD					# search forward in file for WORD
 ?WORD                   # search backwards
 :s/foo/bar/gcI          # searches globally (g), asks to replace (c), case-sensitive (I)
-g* and g#              # prev/next search of current word, in-exact (g)
-=G (shift-g)				# auto-indents everything if you start at “gg”
+g* and g#				# prev/next search of current word, in-exact (g)
+=G (shift-g)			# auto-indents everything if you start at “gg”
 :e FILENAME				# open FILENAME in current window
-:split FILENAME				# open FILENAME in new window
-:vsplit FILENAME			# vertical split
+:split FILENAME			# open FILENAME in new window
+:vsplit FILENAME		# vertical split
 ctrl-w (ctrl-w, up/down arrows)		# cycle/move through windows
 :hide					# close current window
-:make CURRENTFILE			# run compiler on file you’re editing
-:cn					# moving to next error
-:set tabletop #				# sets tabs to be # spaces long
-shift-V, :norm CMDs			# applies CMDs to all highlighted lines
+:make CURRENTFILE		# run compiler on file you’re editing
+:cn						# moving to next error
+:set tabletop #			# sets tabs to be # spaces long
+shift-V, :norm CMDs		# applies CMDs to all highlighted lines
 
 # Variable conversions
 char c = int i + 48, int i = char c - 48, since 0 is at position 48 in ascii values
@@ -72,91 +78,91 @@ freopen(“input.txt”, “r”, stdin)			# Xcode cin file redirection
 fopen “no such file or directory” error => go to edit scheme, options, set custom home directory
 
 # Users and Groups
-adduser john                            # add user w/ system defaults
+adduser john                        # add user w/ system defaults
 useradd -m -G users,wheel -s /bin/bash USER # add new USER manually
-usermod -u UID username                 # change UID
-usermod -g GID username                 # change default group
-groupmod -g GID group                   # change GID of group
-gpasswd -a aezick audio              	# add aezick to audio group
-smbpasswd -a username                   # new Samba user
-chsh -s /bin/bash username              # change default shell
-id                                      # print user and group ID #'s
-ulimit -a                               # per-user system limits
-groups                                  # list group membership
-users                                   # list users logged in
-w                                       # list users logged in
-who                                     # list users logged in
-finger USER                             # directory info about USER
-whoami                                  # current user
+usermod -u UID username             # change UID
+usermod -g GID username             # change default group
+groupmod -g GID group               # change GID of group
+gpasswd -a aezick audio             # add aezick to audio group
+smbpasswd -a username               # new Samba user
+chsh -s /bin/bash username          # change default shell
+id                                  # print user and group ID #'s
+ulimit -a                           # per-user system limits
+groups                              # list group membership
+users                               # list users logged in
+w                                   # list users logged in
+who                                 # list users logged in
+finger USER                         # directory info about USER
+whoami                              # current user
 
 # Machines
-hostname                                # name of this computer
-uname                                   # operating system name
-uname -a                                # info about OS, compiler, etc.
-cat /proc/cpuinfo                       # CPU size/features
-cat /proc/meminfo                       # memory size/features
-uptime                                  # time since power on
+hostname                            # name of this computer
+uname                               # operating system name
+uname -a                            # info about OS, compiler, etc.
+cat /proc/cpuinfo                   # CPU size/features
+cat /proc/meminfo                   # memory size/features
+uptime                              # time since power on
 
 # Files
-ls                                      # list directory contents
-ls -d */				# list all directories
-ls -l                                   # include time, size, etc.
-ls -a                                   # include hidden files
-ls -t                                   # sort by time
-ls -R					# include files in folders within current folder
-stat FILE                               # file modification times, etc.
-touch FILE                              # update modification time to NOW
-touch FILE                              # create empty file, if it doesn't exist
+ls                                  # list directory contents
+ls -d */							# list all directories
+ls -l                               # include time, size, etc.
+ls -a                               # include hidden files
+ls -t                               # sort by time
+ls -R								# include files in folders within current folder
+stat FILE                           # file modification times, etc.
+touch FILE                          # update modification time to NOW
+touch FILE                          # create empty file, if it doesn't exist
 mv /path/source/* /path/dest/		# moves all files in source to dest
 mv $(ls | grep PATTERN) /path/dest	# moves all files with PATTERN to dest
 
 # Paths
-pwd                                     # current directory
-pwd -P                                  # current directory, absolute path
-readlink -f PATH                        # absolute path (GNU only)
+pwd                                 # current directory
+pwd -P                              # current directory, absolute path
+readlink -f PATH                    # absolute path (GNU only)
 cd $(dirname "$BASH_SOURCE") && pwd -P  # absolute path of sourced script
-cd -                                    # return to previous directory
-lsof                                    # list open files
+cd -                                # return to previous directory
+lsof                                # list open files
 
 # Find
-find . hello.txt                        # find hello.txt, starting at PWD
-find / hello.txt                        # find hello.txt, starting at /
-find . '*.txt'                          # txt files
-find . '*hello*'                        # anything with "hello" in the filename
-find . -type f                          # plain files
-find . -type d                          # directories
-find . -name '*~' -exec rm -v {} \;     # remove tilde files
-locate hello.txt                        # search system database for hello.txt
+find . hello.txt                    # find hello.txt, starting at PWD
+find / hello.txt                    # find hello.txt, starting at /
+find . '*.txt'                      # txt files
+find . '*hello*'                    # anything with "hello" in the filename
+find . -type f                      # plain files
+find . -type d                      # directories
+find . -name '*~' -exec rm -v {} \; # remove tilde files
+locate hello.txt                    # search system database for hello.txt
 
 # Superuser permissions
-su                                      # switch user to root
-su USER                                 # switch user to USER
-sudo CMD                                # run CMD as root
-sudo CMD                                # run CMD as root
-sudo -u USER CMD                        # run CMD as USER
-sudoedit FILE                           # edit file as root
+su                                  # switch user to root
+su USER                             # switch user to USER
+sudo CMD                            # run CMD as root
+sudo CMD                            # run CMD as root
+sudo -u USER CMD                    # run CMD as USER
+sudoedit FILE                       # edit file as root
 
 # Processes and Threads
-ps                                      # View my threads
-ps -u johndoe                           # Another user's processes
-ps -ax                                  # All processes on the machine
-ps -axM                                 # All processes and threads
-top                                     # Dynamic view of processes
-top -H                                  # Dynamic view of threads
+ps                                  # View my threads
+ps -u johndoe                       # Another user's processes
+ps -ax                              # All processes on the machine
+ps -axM                             # All processes and threads
+top                                 # Dynamic view of processes
+top -H                              # Dynamic view of threads
 top -b -n7 -d0.5 | grep ^Cpu | sed 1d | grep -oE '[0-9]+\.?[0-9]*% *id' | grep -oE '[0-9]+\.?[0-9]*' | awk '{sum+=$0} END {print sum/NR}' # CPU usage (%)
-pgrep                                   # search for processes, return PID
-lost -i :####				# see process using port ####
-kill PID                                # kill process with PID
-kill -9 PID                             # kill process using signal 9
-killall NAME                            # kill all processes with NAME
-killall -9 NAME                         # kill all using signal 9
-CMD &                                   # start CMD in the background
-fg                                      # bring background command to foreground
-[control-z]                             # suspend current CMD
-bg                                      # send suspended CMD to background
-nohup CMD &                             # logout won't stop CMD
-nohup nice CMD &                        # lower priority
-nohup CMD < /dev/null > LOG 2>&1        # redirect all streams
+pgrep                               # search for processes, return PID
+lost -i :####						# see process using port ####
+kill PID                            # kill process with PID
+kill -9 PID                         # kill process using signal 9
+killall NAME                        # kill all processes with NAME
+killall -9 NAME                     # kill all using signal 9
+CMD &                               # start CMD in the background
+fg                                  # bring background command to foreground
+[control-z]                         # suspend current CMD
+bg                                  # send suspended CMD to background
+nohup CMD &                         # logout won't stop CMD
+nohup nice CMD &                    # lower priority
+nohup CMD < /dev/null > LOG 2>&1    # redirect all streams
 
 # Commonly used signals
 1       HUP (hang up)
@@ -168,9 +174,9 @@ nohup CMD < /dev/null > LOG 2>&1        # redirect all streams
 15      TERM (software termination signal)
 
 # Paths
-which CMD                               # print path to CMD
-whereis CMD                             # print all paths to CMD
-export PATH=$PATH:NEW_DIR               # add new directory to PATH (bash)
+which CMD                           # print path to CMD
+whereis CMD                         # print all paths to CMD
+export PATH=$PATH:NEW_DIR           # add new directory to PATH (bash)
 
 # Manual network configuration (DHCP)
 killall dhcpcd
@@ -219,7 +225,7 @@ nc -v HOST PORT                    # check connection to HOST on PORT
 wget https://www.google.com/       # download one page
 wget -m andrewdeorio.com           # download everything
 traceroute                         # print route packets take to network host
-curl icanhazip.com                  # get my IP address
+curl icanhazip.com                 # get my IP address
 curl --verbose                     # watch protocol in action
 curl --trace-ascii log.txt         # watch protocol in action, more detail
 curl --trace-ascii log.txt --trace-time # include timing
@@ -656,6 +662,7 @@ xattr -r -d com.apple.quarantine /Users/awdeorio/mnt/finance
 # Homebrew
 brew update                             # update repository
 brew upgrade                            # upgrade installed packages
+brew update && brew upgrade				# run these periodically
 brew cleanup                            # remove tarballs, installers, etc.
 brew cask cleanup                       # remove .dmg installers
 brew linkapps                           # link to /Applications/
@@ -846,9 +853,9 @@ DELETE FROM table WHERE column="value"; # remove a row
 \% = % char
 \_ = _ char
 
-################################################################################# CAUTION: ENTERING GIT SECTION
-#
-########################################
+################################
+CAUTION: ENTERING GIT SECTION
+################################
 # One-time setup for a user
 
 # Sets the default name for git to use when you commit
