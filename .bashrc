@@ -1,12 +1,15 @@
 ### Aliases ###############################################################
 alias cdc="cd .."
 alias hc="~/Applications/hashcat/hc"
-alias grep="grep --color"
+alias grep="grep --color -i"
 alias la="ls -G -h -A -p"
 alias ll="ls -G -h -l -p"
 alias ls="ls -G -h -p"
 alias wcl="wc -l"
 alias subl="~/bin/subl"
+alias always_forget="vim ~/Desktop/dotfiles/always_forget.txt"
+alias bashrc="vim ~/.bashrc"
+alias vimrc="vim ~/.vimrc"
 
 ### Editor ################################################################
 export EDITOR="vim"

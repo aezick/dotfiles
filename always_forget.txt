@@ -68,6 +68,9 @@ char c = int i + 48, int i = char c - 48, since 0 is at position 48 in ascii val
 - Undefined symbols in architecture => did you include the :: stuff before function definition?
 - also does the function declaration match in all places, check references symbols ‘&’
 
+# Gdb (compile with -g flag for breakpoints)
+--args ./program arg1 arg2 arg3			# lets you run gdb with cli arguments
+
 # Valgrind
 - $ valgrind -tool=memcheck			# idk probe a better arg for valgrind
 
@@ -321,7 +324,7 @@ cygwin $ ssh2.exe -L 22:localhost:22 ariel.eecs.umich.edu -s service
 cygwin $ scp file localhost: # really sends the file to ariel.eecs.umich.edu
 
 # Open an .rdp file for remote login to virtualsites
-tsclient -x connect.rdp                       
+tsclient -x connect.rdp
 rdesktop server:port -u awdeorio@UMICH.EDU
 
 # Bash
@@ -332,7 +335,7 @@ CMD 2> /dev/null                        # ignore stderr
 CMD &> /dev/null                        # ignore both stdout and stderr
 CMD 2>&1                                # copy stderr to stdout
 CMD 2>&1 | less                         # copy stderr to stdout and view
-<( CMD )                                # create a temporary named pipe 
+<( CMD )                                # create a temporary named pipe
 diff <(echo a) <(echo b)                # diff the output of two commands
 exec > >(tee logfile.txt); exec 2>&1;   # copy stdout and stderr to log file
 $#                                      # argc in bash
@@ -365,7 +368,7 @@ egrep -o "\w+([._-]\w)*@\w+([._-]\w)*\.\w{2,4}" -e  # email addresses
 # grep for tab: In bash, as you are typing the quoted regular expression, hit Ctrl-V then the TAB key to get the TAB in there.
 grep -P                                 # Perl regex
 ^ = beginning of line, $ = end of line, . = wildcard
-grep -c					# 
+grep -c					#
 
 # sed
 sed 1d        # print all but first line
@@ -381,7 +384,7 @@ sed -n '/BEGIN/,/END/p'  # print all lines between "BEGIN" and "END"
 sed 's/^/before/'       # prepend each line matching before"
 sed '/before/d'         # delete lines matching "before"
 sed -e '/before/q'      # print from beginning to line matching 'before'
-sed -nr 's/@@  ([0-9]+\.?[0-9]*) ns total time to execute/\1/p' 
+sed -nr 's/@@  ([0-9]+\.?[0-9]*) ns total time to execute/\1/p'
 sed '1s/before/after/' FILE  # replace first line
 FIXME: sed search and THEN do replace, e.g., '/searchterm/s/query/replace/'
 
@@ -706,7 +709,7 @@ jar -xvf                                # extract all files from jar archive
 
 
 ########################################
-# Perl 
+# Perl
 perl -V                                 # debug environment
 PERL5LIB                                # environment variable for tool installs
 cpan -i PACKAGE                         # install package
@@ -731,7 +734,7 @@ readline.parse_and_bind("tab: complete")
 # Start an IPython Notebook server on a remote server
 ipython notebook --ip 0.0.0.0 --no-browser
 
-# Execute an IPython Notebook in headless mode.  Clears all output, runs the 
+# Execute an IPython Notebook in headless mode.  Clears all output, runs the
 # entire notebook, and writes the result to an output .ipynb file
 # NOTE: `ipython nbconvert` is buggy and incorrectly times out long jobs
 pip install runipy
@@ -761,7 +764,7 @@ mkvirtualenv venv						# make new virtualenv
 workon venv								# work inside the new virtualenv
 
 # Quick web server serving files in PWD on port 8000
-python -m SimpleHTTPServer 
+python -m SimpleHTTPServer
 
 # Run command line programs as functions in Python
 >>> import sh
@@ -852,6 +855,29 @@ DELETE FROM table WHERE column="value"; # remove a row
 \\ = backslash (“\”)
 \% = % char
 \_ = _ char
+
+########################################
+# Sublime User settings
+{
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_with_fields": true,
+	"bold_folder_labels": true,
+	"draw_white_space": "all",
+	"ensure_newline_at_eof_on_save": true,
+	"font_size": 13,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		80
+	],
+	"scroll_past_end": true,
+	"tab_size": 2,
+	"trim_trailing_white_space_on_save": true
+}
 
 ################################
 CAUTION: ENTERING GIT SECTION
@@ -953,7 +979,7 @@ git merge origin/master                 # this will be a FF if no local changes
 git fetch --prune                       # remove stale local branches
 
 # update your local copy, merging from repository, automatic
-git pull       
+git pull
 
 # committing
 git status
@@ -1022,7 +1048,7 @@ git push --tags                         # make tags public
 git checkout tags/TAG                   # checkout a tag as detached HEAD
 
 ########################################
-# Branching 
+# Branching
 git branch                              # view current and local branches
 git branch -a                           # view all branches
 git branch -vv                          # include tracking and commit info
@@ -1092,3 +1118,8 @@ git commit -m 'blah'                    # (normal git flow)
 git push origin master                  # (normal git flow)
 git lfs status                          # staged (uncommitted) changes
 git lfs ls-files                        # files managed by git-lfs (committed)
+
+########################################
+# Fun things
+# from https://twitter.com/JZdziarski/status/765634245268238336
+crontab -e */30 * * * * say -v whisper "I am watching you"	# mess with sum1
