@@ -9,7 +9,9 @@ alias wcl="wc -l"
 alias subl="~/bin/subl"
 alias always_forget="vim ~/Desktop/dotfiles/always_forget.txt"
 alias bashrc="vim ~/.bashrc"
+alias dotfiles="cd ~/Desktop/dotfiles"
 alias vimrc="vim ~/.vimrc"
+alias Desktop="cd ~/Desktop"
 
 ### Editor ################################################################
 export EDITOR="vim"
