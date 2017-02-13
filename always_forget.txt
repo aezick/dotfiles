@@ -902,6 +902,7 @@ git config --global alias.br branch
 git config --global alias.master checkout master
 
 ### Longer aliases
+git config --global alias.unstage 'reset HEAD --'
 # Prints your list of git aliases in a readable format
 git config --global alias.alias !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(    .*\\)/\\1\\\t => \\2/' | sort
 # Prettier graphs, see below sections
@@ -1007,6 +1008,7 @@ git checkout ‘FILE’	# recovers deleted file(s) (‘*.c’)
 git stash       # stash current modifications on stack
 git stash list  # view stash stack
 git stash apply # "unstash" top of stack
+cd .git/lost-found/other/ when trying to find a file overwritten by git pull
 
 # ignoring files in git
 add a .gitignore file to the PWD
@@ -1079,13 +1081,6 @@ git merge --no-ff feature/F  # merge F into develop, keep old branch info
 git branch -d MY             # delete F branch
 git push origin develop      # push to server
 git push origin ":F"         # remove F branch from server
-
-########################################
-# Making git appear more like Subversion
-# This will result in a more linear history, rather than a DAG
-# More: http://stevenharman.net/git-pull-with-automatic-rebase
-git config branch.autosetuprebase always
-git config branch.develop.rebase true
 
 ########################################
 # Merging
