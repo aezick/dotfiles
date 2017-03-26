@@ -24,6 +24,9 @@ alias Downloads="cd ~/Downloads"
 alias eecs486="cd ~/Desktop/eecs486"
 alias eecs489="cd ~/Desktop/eecs489"
 alias eecs484="cd ~/Desktop/eecs484"
+alias hashcat="cd /Users/andrewzick/Applications/hashcat"
+alias caen="ssh caen"
+alias df="df -kh"
 
 ### Editor ################################################################
 export EDITOR="vim"
@@ -38,3 +41,6 @@ export HISTIGNORE="ls:ll:la:git st"      # ignore these commands in history
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 shopt -s histappend                 # append to history, dont overwrite it
+
+### Other ##################################################################
+. /usr/local/etc/profile.d/z.sh
