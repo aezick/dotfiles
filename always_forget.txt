@@ -912,6 +912,8 @@ git config --global alias.ll log --stat --abbrev-commit
 # Set the default email for git to use when you commit
 git config --global user.email "your_email@example.com"
 
+# Resource for undoing things many different ways
+https://github.com/blog/2019-how-to-undo-almost-anything-with-git 
 
 ########################################
 # One-time setup for a local repository
@@ -1118,3 +1120,8 @@ git lfs ls-files                        # files managed by git-lfs (committed)
 # Fun things
 # from https://twitter.com/JZdziarski/status/765634245268238336
 crontab -e */30 * * * * say -v whisper "I am watching you"	# mess with sum1
+
+########################################
+# Check Endian-ness of system
+# from https://serverfault.com/questions/163487/how-to-tell-if-a-linux-system-is-big-endian-or-little-endian
+echo -n I | hexdump -o | awk '{ print substr($2,6,1); exit}'

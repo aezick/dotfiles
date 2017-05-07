@@ -18,6 +18,7 @@ alias Desktop="cd ~/Desktop"
 alias Downloads="cd ~/Downloads"
 alias caen="ssh caen"
 alias df="df -kh"
+alias checkhash="python ~/Desktop/dotfiles/scripts/checkhash.py"
 
 ### Editor ################################################################
 export EDITOR="vim"
@@ -35,3 +36,5 @@ shopt -s histappend                 # append to history, dont overwrite it
 
 ### Other ##################################################################
 . /usr/local/etc/profile.d/z.sh
+export WORKKON_HOME=~/.virtualenvs
+. /Users/andrewzick/torch/install/bin/torch-activate
