@@ -1,27 +1,32 @@
-import sys, hashlib
+import hashlib
+import os
+import sys
 
 def checkhash():
-	if len(sys.argv) != 1:
-		print "Usage: python checkhash.py"
+	if len(sys.argv) < 1:
+		print "Usage: python checkhash.py filepath"
 		return
 
-	filepath = raw_input("Filepath: ")
-	given_hash = raw_input("Given hash: ")
+	filepath = sys.argv[1]
+	given_hash = raw_input("Given hash: ").lower()
 	algorithm  = raw_input("Desired algorithm: ")
 	print
 	
 	try:
-		f = open(filepath, 'rb')
+		f = open(os.path.expanduser(filepath), 'rb')
 		buf = f.read()
 		file_hash = hashlib.new(algorithm)
 		file_hash.update(buf)
+		calculated_hash = file_hash.hexdigest().lower()
 
-		if file_hash.hexdigest() == given_hash:
+		if calculated_hash == given_hash:
 			print "Hashes match."
 		else:
-			print "************************************"
-			print "DO NOT PROCEED. HASHES DO NOT MATCH."
-			print "************************************"
+			print("************************************")
+			print("DO NOT PROCEED. HASHES DO NOT MATCH.")
+			print("Calculated hash:\n\t{}".format(calculated_hash))
+			print("Given hash:\n\t{}".format(given_hash))
+			print("************************************")
 
 	except ValueError:
 		print "Hash algorithm not available."
