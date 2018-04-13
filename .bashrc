@@ -36,6 +36,4 @@ export HISTFILESIZE=100000               # big big history
 shopt -s histappend                 # append to history, dont overwrite it
 
 ### Other ##################################################################
-. /usr/local/etc/profile.d/z.sh
 export WORKKON_HOME=~/.virtualenvs
-. /Users/andrewzick/torch/install/bin/torch-activate
