@@ -1,0 +1,9 @@
+alias.st=status
+alias.ds=diff --staged
+alias.co=checkout
+alias.aa=add -u
+alias.a=add
+alias.br=branch
+alias.c=commit
+alias.ll=log --oneline
+alias.alias=! git config --get-regexp ^alias\. | sed -e s/^alias\.// -e s/\ /\ =\ /

@@ -585,6 +585,7 @@ encfsctl passwd ROOTDIR    # change password
 md5sum                     # compute hash
 md5sum -                   # enter some text, then CTRL-D for random passwd
 shasum                     # compute hash
+shasum --check			   # print if hashes match
 gpg                        # encrypt/decrypt text file
 openssl                    # command line interface to OpenSSL library
 crypto FILE                # encrypt to FILE.crypt
