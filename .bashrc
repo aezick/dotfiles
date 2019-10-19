@@ -1,5 +1,8 @@
 ### Aliases ###############################################################
-alias dc="cd .."
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 alias grep="grep --color -i"
 alias la="ls -G -h -A -p"
 alias ll="ls -G -h -l -p"
@@ -38,6 +41,3 @@ shopt -s histappend                 # append to history, dont overwrite it
 
 ### Other ##################################################################
 export WORKKON_HOME=~/.virtualenvs
-
-
-. /Users/andrewzick/torch/install/bin/torch-activate
