@@ -24,6 +24,7 @@ alias caen="ssh caen"
 alias df="df -kh"
 alias checkhash="python ~/Desktop/dotfiles/scripts/checkhash.py"
 alias pag="ps aux | grep "
+alias dlv="go run /Users/andrewzick/go/src/github.com/go-delve/delve/cmd/dlv/main.go"
 
 ### Editor ################################################################
 export EDITOR="vim"
@@ -41,3 +42,10 @@ shopt -s histappend                 # append to history, dont overwrite it
 
 ### Other ##################################################################
 export WORKKON_HOME=~/.virtualenvs
+
+complete -C /usr/local/bin/terraform terraform
+
+### Docker bash completion  ################################################
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+ . $(brew --prefix)/etc/bash_completion
+ fi
