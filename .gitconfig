@@ -1,0 +1,24 @@
+[alias]
+	st = status
+	ds = diff --staged
+	co = checkout
+	aa = add -u
+	a = add
+	br = branch
+	c = commit
+	ll = log --oneline
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+	pp = pull --prune
+	pu = push -u origin HEAD
+	fp = push --force
+	rc = rebase --continue
+[credential]
+	helper = osxkeychain
+	UseHttpPath = true
+[user]
+	name = Andrew Zick
+	email = aezick@umich.edu
+[core]
+	askpass = git-gui--askpass
+[init]
+	defaultBranch = main
