@@ -34,8 +34,8 @@ export PAGER="less"
 ### History ###############################################################
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTIGNORE="ls:ll:la:git st"      # ignore these commands in history
-export HISTSIZE=100000                   # big big history
-export HISTFILESIZE=100000               # big big history
+export HISTSIZE=10000000                   # big big history
+export HISTFILESIZE=10000000               # big big history
 shopt -s histappend                 # append to history, dont overwrite it
 
 ### Other ##################################################################
