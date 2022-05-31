@@ -70,7 +70,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=( git zsh-z )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,12 +98,8 @@ export HISTFILE=~/.zsh_history
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
+# Preferred editor
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -142,4 +138,16 @@ alias caen="ssh caen"
 alias df="df -kh"
 alias pag="ps aux | grep "
 alias dlv="go run /Users/andrewzick/go/src/github.com/go-delve/delve/cmd/dlv/main.go"
+
+# More complex aliases
+# (many from thread: https://twitter.com/QuinnyPig/status/1473112091808591874)
+
+# This function means `cdf` changes directory to that of your frontmost Finder window.
+cdf() {
+  target=`osascript -e 'tell application "Finder" to get POSIX path of (target of front Finder window as text)'`
+  cd "$target"
+}
+
+# This alias opens your current directory in Finder.
+alias f='open -a Finder ./'
 

@@ -12,8 +12,8 @@
 	pu = push -u origin HEAD
 	fp = push --force
 	rc = rebase --continue
+	sw = switch
 [credential]
-	helper = osxkeychain
 	UseHttpPath = true
 [user]
 	name = Andrew Zick
@@ -22,3 +22,5 @@
 	askpass = git-gui--askpass
 [init]
 	defaultBranch = main
+[pager]
+	branch = false
